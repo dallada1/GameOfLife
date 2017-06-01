@@ -12,3 +12,17 @@ D:\dev\GameOfLife\GameOfLife\GameOfLifeDomainTests\bin\Debug\Microsoft.VisualStu
 D:\dev\GameOfLife\GameOfLife\GameOfLifeDomainTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
 D:\dev\GameOfLife\GameOfLife\GameOfLifeDomainTests\obj\Debug\GameOfLifeDomainTests.dll
 D:\dev\GameOfLife\GameOfLife\GameOfLifeDomainTests\obj\Debug\GameOfLifeDomainTests.pdb
+D:\dev\GameOfLife\Game\GameOfLifeDomainTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+D:\dev\GameOfLife\Game\GameOfLifeDomainTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+D:\dev\GameOfLife\Game\GameOfLifeDomainTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+D:\dev\GameOfLife\Game\GameOfLifeDomainTests\bin\Debug\GameOfLifeDomainTests.dll
+D:\dev\GameOfLife\Game\GameOfLifeDomainTests\bin\Debug\GameOfLifeDomainTests.pdb
+D:\dev\GameOfLife\Game\GameOfLifeDomainTests\bin\Debug\GameOfLifeDomain.dll
+D:\dev\GameOfLife\Game\GameOfLifeDomainTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+D:\dev\GameOfLife\Game\GameOfLifeDomainTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+D:\dev\GameOfLife\Game\GameOfLifeDomainTests\bin\Debug\GameOfLifeDomain.pdb
+D:\dev\GameOfLife\Game\GameOfLifeDomainTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+D:\dev\GameOfLife\Game\GameOfLifeDomainTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+D:\dev\GameOfLife\Game\GameOfLifeDomainTests\obj\Debug\GameOfLifeDomainTests.csprojResolveAssemblyReference.cache
+D:\dev\GameOfLife\Game\GameOfLifeDomainTests\obj\Debug\GameOfLifeDomainTests.dll
+D:\dev\GameOfLife\Game\GameOfLifeDomainTests\obj\Debug\GameOfLifeDomainTests.pdb

@@ -10,10 +10,12 @@ namespace GameOfLifeDomainTests
     public class GameControllerTests
     {
         private GameController gameController;
+        private IRule rule;
 
         public GameControllerTests()
         {
-            gameController = new GameController(new List<Cell>());
+            rule = new DefaultRuleSet();
+            gameController = new GameController(new List<Cell>(), rule);
         }
 
         [TestMethod]
@@ -23,12 +25,8 @@ namespace GameOfLifeDomainTests
             Assert.AreEqual(100, cells.Count());
 
             for (var x = 0; x < 10; x++)
-            {
                 for (var y = 0; y < 10; y++)
-                {
                     Assert.AreEqual(1, cells.Count(c => c.XCoordinate == x && c.YCoordinate == y));
-                }
-            }
         }
 
         [TestMethod]
@@ -38,10 +36,9 @@ namespace GameOfLifeDomainTests
             var y = 3;
             var seededCell = new Cell(x, y);
 
-            var seededController = new GameController(new List<Cell>() { seededCell });
-
-            var cells = seededController.GetCells();
-            var seededGameCell = cells.First(c => c.XCoordinate == x && c.YCoordinate == y);
+            var seededController = new GameController(new List<Cell>() { seededCell }, rule);
+            
+            var seededGameCell = seededController.GetCells().First(c => c.XCoordinate == x && c.YCoordinate == y);
             Assert.IsTrue(seededGameCell.IsAlive);
         }
     }

@@ -3,3 +3,8 @@ D:\dev\GameOfLife\GameOfLife\GameOfLifeDomain\bin\Debug\GameOfLifeDomain.pdb
 D:\dev\GameOfLife\GameOfLife\GameOfLifeDomain\obj\Debug\GameOfLifeDomain.csprojResolveAssemblyReference.cache
 D:\dev\GameOfLife\GameOfLife\GameOfLifeDomain\obj\Debug\GameOfLifeDomain.dll
 D:\dev\GameOfLife\GameOfLife\GameOfLifeDomain\obj\Debug\GameOfLifeDomain.pdb
+D:\dev\GameOfLife\Game\GameOfLifeDomain\bin\Debug\GameOfLifeDomain.dll
+D:\dev\GameOfLife\Game\GameOfLifeDomain\bin\Debug\GameOfLifeDomain.pdb
+D:\dev\GameOfLife\Game\GameOfLifeDomain\obj\Debug\GameOfLifeDomain.csprojResolveAssemblyReference.cache
+D:\dev\GameOfLife\Game\GameOfLifeDomain\obj\Debug\GameOfLifeDomain.dll
+D:\dev\GameOfLife\Game\GameOfLifeDomain\obj\Debug\GameOfLifeDomain.pdb

@@ -41,7 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cell.cs" />
+    <Compile Include="DefaultRuleSet.cs" />
     <Compile Include="GameController.cs" />
+    <Compile Include="IRule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

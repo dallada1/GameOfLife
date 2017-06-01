@@ -51,6 +51,7 @@
     <Compile Include="CellTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GameControllerTests.cs" />
+    <Compile Include="DefaultRuleSetTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
