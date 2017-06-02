@@ -10,6 +10,7 @@ namespace GameOfLifeDomain
     {
         private List<Cell> cells;
         private IRule rule;
+        private const Int32 MaxBound = 9;
 
         public GameController(List<Cell> liveCellSeed, IRule rule)
         {
@@ -41,6 +42,44 @@ namespace GameOfLifeDomain
         private Cell GetCellWithCoordinates(Int32 xCoordinate, Int32 yCoordinate)
         {
             return cells.First(c => c.XCoordinate == xCoordinate && c.YCoordinate == yCoordinate);
+        }
+
+        public IEnumerable<Cell> GetNextGeneration()
+        {
+            var newCellList = new List<Cell>();
+
+            foreach(var cell in cells)
+            {
+                var newCell = new Cell(cell.XCoordinate, cell.YCoordinate);
+                var neighbors = GetNeighbors(cell);
+
+                if (rule.DoesCellLive(neighbors, cell))
+                    newCell.IsAlive = true;
+
+                newCellList.Add(newCell);
+            }
+
+            cells = newCellList;
+
+            return GetCells();
+        }
+
+        private IEnumerable<Cell> GetNeighbors(Cell cell)
+        {
+            var neighbors = new List<Cell>();
+
+            for(int x = -1; x < 2; x++)
+            {
+                for(int y = -1; y < 2; y++)
+                {
+                    var xToLookFor = cell.XCoordinate + x;
+                    var yToLookFor = cell.YCoordinate + y;
+                    if (xToLookFor >= 0 && xToLookFor <= MaxBound && yToLookFor >= 0 && yToLookFor <= MaxBound)
+                        neighbors.Add(GetCellWithCoordinates(xToLookFor, yToLookFor));
+                }
+            }
+
+            return neighbors;
         }
     }
 }
