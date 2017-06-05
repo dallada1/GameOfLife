@@ -91,6 +91,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GameOfLifeDomain\GameOfLifeDomain.csproj">
+      <Project>{1C0318A6-C387-4183-B311-4CEB4E9ADDD3}</Project>
+      <Name>GameOfLifeDomain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GameOfLife\GameOfLife.csproj">
       <Project>{477E6B3F-7855-4A05-AA3F-8FE9D17A9A62}</Project>
       <Name>GameOfLife</Name>

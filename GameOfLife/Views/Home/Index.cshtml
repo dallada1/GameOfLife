@@ -1,31 +1,34 @@
-﻿@{
+﻿@model GameOfLife.Models.CellsModel
+@{
     ViewBag.Title = "Home Page";
 }
 
+
 <div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
+    @foreach (var cell in Model.Cells)
+    {
+        if (cell.IsAlive)
+        {
+            <div class="alive"></div>
+        }
+        else
+        {
+            <div></div>
+        }
+    }
 </div>
+
+<input type="button" value="Initialize Grid" onclick="location.href='@Url.Action("Initialize", "Home")'" />
+
+@using (Html.BeginForm("Submit", "Home", FormMethod.Post))
+{
+    var cellCount = 0;
+    foreach (var cell in Model.Cells)
+    {
+        <input type="hidden" value="@cell.XCoordinate" name="cells[@cellCount].XCoordinate" />
+        <input type="hidden" value="@cell.YCoordinate" name="cells[@cellCount].YCoordinate" />
+        <input type="hidden" value="@cell.IsAlive.ToString()" name="cells[@cellCount].IsAlive" />
+        cellCount++;
+    }
+    <input type="submit" value="Next Generation" />
+}

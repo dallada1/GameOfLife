@@ -9,8 +9,11 @@ namespace GameOfLifeDomain
     public class Cell
     {
         public Boolean IsAlive { get; set; }
-        public Int32 XCoordinate { get; private set; }
-        public Int32 YCoordinate { get; private set; }
+        public Int32 XCoordinate { get; set; }
+        public Int32 YCoordinate { get; set; }
+
+        public Cell()
+        { }
 
         public Cell(Int32 xCoordinate, Int32 yCoordinate)
         {

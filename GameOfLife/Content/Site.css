@@ -27,13 +27,17 @@ div {
     margin-right: auto;
     margin-left: auto;
     align-self: center;
-    width: 500px;
-    height: 1000px;
+    width: 800px;
+    height: 800px;
 }
 
 div div {
-    width: 100px;
-    height: 100px;
+    width: 40px;
+    height: 40px;
     outline: 1px solid;
     float: left;
+}
+
+.alive {
+    background: #000;
 }

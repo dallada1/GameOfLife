@@ -73,5 +73,24 @@ namespace GameOfLifeDomainTests
             Assert.IsTrue(nextGeneration.First(g => g.XCoordinate == bottomRight.XCoordinate && g.YCoordinate == bottomRight.YCoordinate).IsAlive);
             Assert.IsTrue(nextGeneration.First(g => g.XCoordinate == topRight.XCoordinate && g.YCoordinate == topRight.YCoordinate).IsAlive);
         }
+
+        [TestMethod]
+        public void GenerationWithTwoCellsInitilizedDies()
+        {
+            var bottomLeft = new Cell(0, 0);
+            var bottomRight = new Cell(1, 0);
+            var lShapedSeed = new List<Cell>()
+            {
+                bottomLeft,
+                bottomRight
+            };
+            var seededController = new GameController(lShapedSeed, rule);
+
+            var nextGeneration = seededController.GetNextGeneration();
+
+            Assert.AreEqual(0, nextGeneration.Count(g => g.IsAlive));
+            Assert.IsFalse(nextGeneration.First(g => g.XCoordinate == bottomLeft.XCoordinate && g.YCoordinate == bottomLeft.YCoordinate).IsAlive);
+            Assert.IsFalse(nextGeneration.First(g => g.XCoordinate == bottomRight.XCoordinate && g.YCoordinate == bottomRight.YCoordinate).IsAlive);
+        }
     }
 }

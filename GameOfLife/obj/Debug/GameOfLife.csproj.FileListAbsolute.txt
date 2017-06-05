@@ -132,3 +132,5 @@ D:\dev\GameOfLife\Game\GameOfLife\bin\Microsoft.AI.Web.xml
 D:\dev\GameOfLife\Game\GameOfLife\obj\Debug\GameOfLife.csprojResolveAssemblyReference.cache
 D:\dev\GameOfLife\Game\GameOfLife\obj\Debug\GameOfLife.dll
 D:\dev\GameOfLife\Game\GameOfLife\obj\Debug\GameOfLife.pdb
+D:\dev\GameOfLife\Game\GameOfLife\bin\GameOfLifeDomain.dll
+D:\dev\GameOfLife\Game\GameOfLife\bin\GameOfLifeDomain.pdb
