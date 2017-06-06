@@ -127,6 +127,23 @@ div .alive {
     top: 250px;
 }
 
+.Play {
+    position: absolute;
+    right: 600px;
+    top: 100px;
+}
+.Pause {
+    position: absolute;
+    right: 350px;
+    top: 100px;
+}
+
+.PauseButtonLabel {
+    position: absolute;
+    right: 390px;
+    top: 50px;
+}
+
 .control-group {
     position: relative;
     left: 0px;
@@ -170,15 +187,6 @@ cursor: pointer;
 
 
 
-// Vars $purple: #8d63db; $violet: #5b67d5; $gray: #f9faff; $aqua: #00cae5; $turquoise: #00e5c6; $neon: #bdf030; $dark: #464646; $blue: #2E9FFF; $white: #FFFFFF; $bg: darken($gray,3%); $bg2: darken($gray,1%); $oswald: 'Oswald', sans-serif; body {
-    margin: 0;
-    padding: 0;
-    background: $bg;
-    display: table;
-    width: 100%;
-    height: 100%;
-    min-height: 100%;
-}
 
 .wrapper {
     display: flex;
@@ -208,7 +216,7 @@ cursor: pointer;
 header {
     display: flex;
     padding: 1rem 0;
-    h3
+   
 
 {
     margin: auto;
@@ -238,7 +246,7 @@ h3 {
     padding-bottom: 0;
     width: 230px;
     margin: 0 10px 10px;
-    font: 300 14px/50px $oswald;
+    font: 300 12px/40px $oswald;
     letter-spacing: .4em;
     text-transform: uppercase;
     border: 3px solid $aqua;

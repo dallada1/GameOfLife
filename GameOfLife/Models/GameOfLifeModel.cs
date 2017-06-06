@@ -6,11 +6,13 @@ namespace GameOfLife.Models
     {
         public CellsModel CellsModel { get; set; }
         public TextModel TextModel { get; set; }
+        public bool AutoRun { get; set; }
 
         public GameOfLifeModel()
         {
             this.CellsModel = new CellsModel();
             this.TextModel = new TextModel();
+            this.AutoRun = false;
         }
     }
 }

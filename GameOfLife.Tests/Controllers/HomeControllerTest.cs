@@ -62,7 +62,7 @@ namespace GameOfLife.Tests.Controllers
         {
             var result = controller.SeedGrid(threeBlockHorizontalOscillatorSeededAtOneOne) as ViewResult;
             var modelBeforeIncrementGeneration = result.Model as GameOfLifeModel;
-            result = controller.IncrementGeneration(modelBeforeIncrementGeneration.CellsModel.Cells.ToList()) as ViewResult;
+            result = controller.IncrementGeneration(modelBeforeIncrementGeneration.CellsModel.Cells.ToList(), false) as ViewResult;
 
             var modelAfterIncrementGeneration = result.Model as GameOfLifeModel;
 

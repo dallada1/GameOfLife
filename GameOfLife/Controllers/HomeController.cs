@@ -19,6 +19,21 @@ namespace GameOfLife.Controllers
             this.rule = new DefaultRuleSet();
         }
 
+        public ActionResult Submit(string submitButton, List<Cell> cells, Boolean runAutomatically)
+        {
+            switch (submitButton)
+            {
+                case "Play":
+                    return (Play(cells));
+                case "Pause":
+                    return (Pause(cells));
+                case "Next Generation":
+                    return (IncrementGeneration(cells, runAutomatically));
+                default:
+                    return (View());
+            }
+        }
+
         public ActionResult Index()
         {
             var emptySeed = new List<Cell>();
@@ -48,34 +63,38 @@ namespace GameOfLife.Controllers
             }
             gameController = new GameController(listOfCells, rule);
             cells = gameController.GetCells();
-            var model = CreateGameOfLifeModel(cells);
+            var model = CreateGameOfLifeModel(cells, false);
 
             return View("Index", model);
         }
 
-        private GameOfLifeModel CreateGameOfLifeModel(List<Cell> newCells)
+        private GameOfLifeModel CreateGameOfLifeModel(List<Cell> newCells, Boolean autoRun)
         {
             return new GameOfLifeModel()
             {
                 CellsModel = new CellsModel() { Cells = newCells },
-                TextModel = new TextModel()
+                TextModel = new TextModel(),
+                AutoRun = autoRun
             };
         }
 
         [HttpPost]
-        public ActionResult IncrementGeneration(List<Cell> cells)
+        public ActionResult IncrementGeneration(List<Cell> cells, Boolean runAutomatically)
         {
+            if (runAutomatically)
+                System.Threading.Thread.Sleep(500);
             var liveCellSeed = cells.Where(c => c.IsAlive).ToList();
             gameController = new GameController(liveCellSeed, rule);
             var newCells = gameController.GetNextGeneration().ToList();
-            var model = CreateGameOfLifeModel(newCells);
+            var model = CreateGameOfLifeModel(newCells, runAutomatically);
 
             return View("Index", model);
         }
 
         [HttpPost]
-        public ActionResult SeedGridFromTemplate(List<Cell> cells, String textInput, String RadioButton)
+        public ActionResult SeedGridFromTemplate(String textInput, String RadioButton)
         {
+            Random rand = new Random();
             var XCoord = 9;
             var YCoord = 9;
             var listOfCells = new List<Cell>();
@@ -85,6 +104,7 @@ namespace GameOfLife.Controllers
                 XCoord = Convert.ToInt32(delimitedInput[0]);
                 YCoord = Convert.ToInt32(delimitedInput[1]);
             }
+
             switch (RadioButton)
             {
                 case "Box":
@@ -100,19 +120,61 @@ namespace GameOfLife.Controllers
                     break;
                 case "HorizontalLine":
                     listOfCells.Add(new Cell(XCoord, YCoord));
-                    listOfCells.Add(new Cell(XCoord, YCoord - 1));
-                    listOfCells.Add(new Cell(XCoord, YCoord - 2));
+                    listOfCells.Add(new Cell(XCoord, YCoord + 1));
+                    listOfCells.Add(new Cell(XCoord, YCoord + 2));
+                    break;
+                case "Toad":
+                    listOfCells.Add(new Cell(XCoord, YCoord));
+                    listOfCells.Add(new Cell(XCoord, YCoord + 1));
+                    listOfCells.Add(new Cell(XCoord, YCoord + 2));
+                    listOfCells.Add(new Cell(XCoord + 1, YCoord + 1));
+                    listOfCells.Add(new Cell(XCoord + 1, YCoord + 2));
+                    listOfCells.Add(new Cell(XCoord + 1, YCoord + 3));
+                    break;
+                case "Glider":
+                    listOfCells.Add(new Cell(XCoord, YCoord));
+                    listOfCells.Add(new Cell(XCoord, YCoord + 2));
+                    listOfCells.Add(new Cell(XCoord + 1, YCoord + 1));
+                    listOfCells.Add(new Cell(XCoord + 2, YCoord + 1));
+                    listOfCells.Add(new Cell(XCoord + 1, YCoord + 2));
+                    listOfCells.Add(new Cell(XCoord + 2, YCoord + 1));
                     break;
             }
+            
             listOfCells = CheckBounds(listOfCells);
             gameController = new GameController(listOfCells, rule);
             cells = gameController.GetCells();
-            var model = CreateGameOfLifeModel(cells);
+            if (RadioButton == "Random")
+                
+                for (int i = 0; i < 400; i++)
+                {
+                    if(rand.Next(2) == 0)
+                        cells.ElementAt(i).IsAlive = true;
+                }
+            var model = CreateGameOfLifeModel(cells, false);
 
             return View("Index", model);
         }
 
-        public List<Cell> CheckBounds(List<Cell> cells)
+        [HttpPost]
+        public ActionResult Play(List<Cell> cells)
+        {
+            var newModel = CreateGameOfLifeModel(cells, false);
+            newModel.AutoRun = true;
+
+            return View("Index", newModel);
+        }
+
+        [HttpPost]
+        public ActionResult Pause(List<Cell> cells)
+        {
+            var newModel = CreateGameOfLifeModel(cells, false);
+            newModel.AutoRun = false;
+
+            return View("Index", newModel);
+        }
+
+        private List<Cell> CheckBounds(List<Cell> cells)
         {
             var newList = new List<Cell>();
             foreach (var cell in cells)

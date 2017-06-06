@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameOfLifeDomain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -90,4 +91,9 @@ namespace GameOfLifeDomain
 
 
     }
+}
+
+public class IncrementGenerationOptions
+{
+    public List<Cell> cells { get; set; }
 }

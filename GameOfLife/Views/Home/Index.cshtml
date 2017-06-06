@@ -3,7 +3,6 @@
     ViewBag.Title = "Home Page";
 }
 
-
 <div class="grid">
     @foreach (var cell in Model.CellsModel.Cells)
     {
@@ -18,10 +17,8 @@
     }
 </div>
 
-
 @using (Html.BeginForm("SeedGrid", "Home", FormMethod.Post))
 {
-        
         <div class="initilizeLabel">
         <label for="textInput">Initilize With Comma Separated X and Y coordinates delimited with '&'</label>
         </div>
@@ -32,40 +29,10 @@
                 <button class="btn style2" type="submit">Submit</button>
             </div>
         </div>
-            
-       
-}
-
-@using (Html.BeginForm("IncrementGeneration", "Home", FormMethod.Post))
-{
-    var cellCount = 0;
-    foreach (var cell in Model.CellsModel.Cells)
-    {
-        <input type="hidden" value="@cell.XCoordinate" name="cells[@cellCount].XCoordinate" />
-        <input type="hidden" value="@cell.YCoordinate" name="cells[@cellCount].YCoordinate" />
-        <input type="hidden" value="@cell.IsAlive.ToString()" name="cells[@cellCount].IsAlive" />
-        cellCount++;
-    }
-    <div class="nextGenerationLabel">
-        <label>Increments to the Next Generation</label>
-    </div>
-    <div class="nextGenerationButton">
-        <input class="btn style2" type="submit" value="Next Generation"/>
-    </div>
-
 }
 
 @using (Html.BeginForm("SeedGridFromTemplate", "Home", FormMethod.Post))
 {
-    var cellCount = 0;
-    foreach (var cell in Model.CellsModel.Cells)
-    {
-        <input type="hidden" value="@cell.XCoordinate" name="cells[@cellCount].XCoordinate" />
-        <input type="hidden" value="@cell.YCoordinate" name="cells[@cellCount].YCoordinate" />
-        <input type="hidden" value="@cell.IsAlive.ToString()" name="cells[@cellCount].IsAlive" />
-        cellCount++;
-    }
-    
     <div class="seedLabel">
         <label for="textInput">Initilize With Shape Seed Coordinates from the Upper Left of the Shape 9,9 Default</label>
     </div>
@@ -76,10 +43,52 @@
     </div>
     <div class="radioButtons">
         <input id="Box" type="radio" name="RadioButton" value="Box"><label for="Box">Box 2x2</label><br>
-        <input id="Line Oscillator" type="radio" name="RadioButton" value="HorizontalLine"><label for="Line Oscillator">Horizontal 3x3 Line Oscillator</label><br>
-        <input id="Line Oscillator" type="radio" name="RadioButton" value="VerticalLine"><label for="Line Oscillator">Vertical 3x3 Line Oscillator</label>
+        <input id="Horizontal Line" type="radio" name="RadioButton" value="HorizontalLine"><label for="Line Oscillator">Horizontal 3x3 Line Oscillator</label><br>
+        <input id="Vertical Line" type="radio" name="RadioButton" value="VerticalLine"><label for="Line Oscillator">Vertical 3x3 Line Oscillator</label><br>
+        <input id="Toad" type="radio" name="RadioButton" value="Toad"><label for="Toad">Toad</label><br>
+        <input id="Glider" type="radio" name="RadioButton" value="Glider"><label for="Glider">Glider</label><br>
+        <input id="Random" type="radio" name="RadioButton" value="Random"><label for="Random">Random Seed</label><br>
     </div>
-
-
 }
 
+@using (Html.BeginForm("Submit", "Home", FormMethod.Post))
+{
+
+    var cellCount = 0;
+    foreach (var cell in Model.CellsModel.Cells)
+    {
+        <input type="hidden" value="@cell.XCoordinate" name="cells[@cellCount].XCoordinate" />
+        <input type="hidden" value="@cell.YCoordinate" name="cells[@cellCount].YCoordinate" />
+        <input type="hidden" value="@cell.IsAlive.ToString()" name="cells[@cellCount].IsAlive" />
+        cellCount++;
+    }
+    
+    <div class="Play">
+        <input class="btn style2" type="submit" value="Play" name="submitButton" />
+    </div>
+    <div class="PauseButtonLabel">
+        <label for="Pause">Please Spam Pause Button</label>
+    </div>
+    <div class="Pause">
+        <input class="btn style2" type="submit" value="Pause" name="submitButton"/>
+    </div>
+    <input type="hidden" value="@Model.AutoRun.ToString()" name="runAutomatically" />
+    <div class="nextGenerationLabel">
+        <label>Increments to the Next Generation</label>
+    </div>
+    <div class="nextGenerationButton">
+        <input class="btn style2" type="submit" value="Next Generation" id="NextGenerationID" name="submitButton" />
+    </div>
+}
+
+<script>
+
+        function myFunction() {
+            document.getElementById("NextGenerationID").click();
+        }
+
+    $(document).ready(function () {
+        if (@Json.Encode(Model.AutoRun))
+            myFunction();
+    });
+</script>
