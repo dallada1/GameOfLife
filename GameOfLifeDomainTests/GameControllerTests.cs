@@ -19,13 +19,13 @@ namespace GameOfLifeDomainTests
         }
 
         [TestMethod]
-        public void CellCollectionInitializedForTenByTenGrid()
+        public void CellCollectionInitializedForTwentyByTwentyGrid()
         {
             IEnumerable<Cell> cells = gameController.GetCells();
-            Assert.AreEqual(100, cells.Count());
+            Assert.AreEqual(400, cells.Count());
 
-            for (var x = 0; x < 10; x++)
-                for (var y = 0; y < 10; y++)
+            for (var x = 0; x < 20; x++)
+                for (var y = 0; y < 20; y++)
                     Assert.AreEqual(1, cells.Count(c => c.XCoordinate == x && c.YCoordinate == y));
         }
 

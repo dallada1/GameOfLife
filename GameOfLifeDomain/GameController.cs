@@ -81,5 +81,13 @@ namespace GameOfLifeDomain
 
             return neighbors;
         }
+
+        public Int32 GetMaxBound()
+        {
+            Int32 copy = Convert.ToInt32(MaxBound);
+            return MaxBound;
+        }
+
+
     }
 }

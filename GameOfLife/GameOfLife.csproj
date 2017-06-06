@@ -146,6 +146,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CellsModel.cs" />
+    <Compile Include="Models\GameOfLifeModel.cs" />
+    <Compile Include="Models\TextModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
